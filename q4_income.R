@@ -3,7 +3,7 @@ library(readr)
 library(ggplot2)
 
 # import household income data
-hh_income <- read_csv("~/Google Drive/Google Drive Personal/College/Fall 2018/Thesis/Analysis/data/census_household_income/census_block_income_data/nhgis0001_ds233_20175_2017_blck_grp.csv")
+hh_income <- read_csv("data/census_household_income/census_block_income_data/nhgis0001_ds233_20175_2017_blck_grp.csv")
 
 hh_income <- hh_income %>%
   mutate(join_id = paste(STATEA,COUNTYA,TRACTA,BLKGRPA,sep = '')) %>% # remove the preceding 'G' from the variable

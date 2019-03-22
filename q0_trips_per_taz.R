@@ -6,7 +6,7 @@ library(dplyr)
 
 # scooter data
 # import trip data from csv
-enriched_scooter_trips <- read_csv("~/Google Drive/Google Drive Personal/College/Fall 2018/Thesis/Analysis/enriched_scooter_trips.csv", col_types = cols(EndTime = col_datetime(format = "%Y-%m-%d %H:%M:%S"), StartTime = col_datetime(format = "%Y-%m-%d %H:%M:%S")))
+enriched_scooter_trips <- read_csv("enriched_scooter_trips.csv", col_types = cols(EndTime = col_datetime(format = "%Y-%m-%d %H:%M:%S"), StartTime = col_datetime(format = "%Y-%m-%d %H:%M:%S")))
 
 # count the number of NAs
 sum(is.na(enriched_scooter_trips))

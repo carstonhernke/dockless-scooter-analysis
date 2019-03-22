@@ -8,7 +8,7 @@ library(readr)
 library(dplyr)
 
 # import trip data from csv
-enriched_scooter_trips <- read_csv("~/Google Drive/Google Drive Personal/College/Fall 2018/Thesis/Analysis/enriched_scooter_trips.csv", col_types = cols(EndTime = col_datetime(format = "%Y-%m-%d %H:%M:%S"), StartTime = col_datetime(format = "%Y-%m-%d %H:%M:%S")))
+enriched_scooter_trips <- read_csv("enriched_scooter_trips.csv", col_types = cols(EndTime = col_datetime(format = "%Y-%m-%d %H:%M:%S"), StartTime = col_datetime(format = "%Y-%m-%d %H:%M:%S")))
 
 # count the number of NAs
 sum(is.na(enriched_scooter_trips))
@@ -24,7 +24,7 @@ daily_ride_count <- enriched_scooter_trips %>%
 
 # get weather data
 library(readr)
-mpls_historical <- read_csv("~/Google Drive/Google Drive Personal/College/Fall 2018/Thesis/Analysis/data/historical_weather/mpls_historical.csv", 
+mpls_historical <- read_csv("data/historical_weather/mpls_historical.csv", 
                             col_types = cols(AWND = col_double(), 
                                              DATE = col_date(format = "%Y-%m-%d"), 
                                              TMAX = col_integer(), TMIN = col_integer(), 

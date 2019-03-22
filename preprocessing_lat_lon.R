@@ -5,7 +5,7 @@ library(sf)
 library(readr)
 
 # Import data on scooter rides from CSV
-Motorized_Foot_Scooter_Trips_2018 <- read_csv("~/Google Drive/Google Drive Personal/College/Fall 2018/Thesis/Analysis/data/mpls_scooter_data/Motorized_Foot_Scooter_Trips_2018.csv", 
+Motorized_Foot_Scooter_Trips_2018 <- read_csv("data/mpls_scooter_data/Motorized_Foot_Scooter_Trips_2018.csv", 
                                               col_types = cols(EndTime = col_datetime(format = ""), 
                                                                StartTime = col_datetime(format = "")))
 scooter_data <-  Motorized_Foot_Scooter_Trips_2018
