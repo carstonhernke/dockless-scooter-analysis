@@ -54,8 +54,9 @@ taz_with_income$income_group <- cut(x = taz_with_income$average_income, breaks =
 levels(taz_with_income$income_group) <- c('1st quartile','2nd quartile','3rd quartile','4th quartile')
 
 plot(taz_with_income['income_group'], main = "TAZ by Income Quartile")
-# get scooter ride data
+# get scooter ride dataa
 # import trip data from csv
+
 enriched_scooter_trips <- read_csv("~/Google Drive/Google Drive Personal/College/Fall 2018/Thesis/Analysis/enriched_scooter_trips.csv", col_types = cols(EndTime = col_datetime(format = "%Y-%m-%d %H:%M:%S"), StartTime = col_datetime(format = "%Y-%m-%d %H:%M:%S")))
 
 # count the number of NAs

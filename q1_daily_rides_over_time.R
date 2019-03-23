@@ -1,5 +1,7 @@
 # Research question: where are scooters distributed at the beginning of the day?
 library(dplyr)
+library(ggplot2)
+library(readr)
 
 ### PREP ###
 
