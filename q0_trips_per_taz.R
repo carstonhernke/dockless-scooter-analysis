@@ -43,5 +43,7 @@ taz_with_freq <- taz_data %>%
   left_join(trips_per_taz, by = c("TAZ" = "Start_TAZ")) %>%
   select(TAZ, n, geometry)
 
+plot(taz_data['TAZ'])
+
 # almost all trips occur on the UMN campus or downtown... this is definitely skewing data
 plot(taz_with_freq['n'], main = "Freqency of scooter trip starts by TAZ")
