@@ -28,7 +28,7 @@ mpls_boundary <- st_read("data/minneapolis_boundary/msvcGIS_MinneapolisCityLimit
 
 hex_data <- st_read("hex_grid.shp")
 
-# adjust the coordinate reference system for census data to match that of the TAZ
+# adjust the coordinate reference system for census data to match that of the hex
 crs = st_crs(hex_data)
 income_by_block_group <- st_transform(income_by_block_group,crs = crs)
 

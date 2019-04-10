@@ -3,6 +3,7 @@
 library(dplyr)
 library(sf)
 library(readr)
+library(ggplot2)
 
 ### import hex data
 hex_data <- st_read("hex_grid.shp")
@@ -50,26 +51,9 @@ hex_infra_joined <- hex_infra %>%
   mutate(rides_started = n) %>%
   select(rides_started, HEX_ID, infrastructure_length)
 
-# testing for spatial autocorrelation
-# subset the center data only for the hexes we have data for
-library(ape)
-hex_centers <- hex_data %>%
-  st_centroid() %>%
-  st_sf()
-sfc_as_cols <- function(x, names = c("lon","lat")) {
-  stopifnot(inherits(x,"sf") && inherits(sf::st_geometry(x),"sfc_POINT"))
-  ret <- do.call(rbind,sf::st_geometry(x))
-  ret <- tibble::as_tibble(ret)
-  stopifnot(length(names) == ncol(ret))
-  ret <- setNames(ret,names)
-  dplyr::bind_cols(x,ret)
-}
-hex_centers <- sfc_as_cols(hex_centers)
-hex_dists <- as.matrix(dist(cbind(hex_centers$lon, hex_centers$lat)))
-diag(hex_dists) <- 0
-
-# Run Moran's I to test for Spatial Autocorrelation
-Moran.I(hex_infra_joined$infrastructure_length, hex_dists) # there is spatial autocorrelation
+ggplot(data = hex_infra_joined, aes(x = infrastructure_length, y = rides_started)) +
+  geom_point() +
+  geom_smooth(method='lm', se = FALSE)
 
 # running regression
 plot(hex_infra_joined)

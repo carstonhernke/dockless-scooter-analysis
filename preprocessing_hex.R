@@ -88,3 +88,5 @@ library(sf)
 # save the enriched data to csv
 write.csv(enriched_scooters,"enriched_scooter_trips_hex.csv")
 st_write(hex_grid,"hex_grid.shp")
+
+plot(hex_with_students)
