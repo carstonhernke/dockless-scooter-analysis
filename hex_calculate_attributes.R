@@ -103,3 +103,7 @@ hex_with_attributes <- hex_with_income %>%
   left_join(hex_with_students, by = c("HEX_ID" = "HEX_ID"))
 
 st_write(hex_with_attributes,"hex_with_attributes.shp", delete_dsn = TRUE)
+
+plot(hex_with_attributes['average_income'], main = "")
+plot(hex_with_attributes['population'], main = "")
+plot(hex_with_attributes['college_students'], main = "")

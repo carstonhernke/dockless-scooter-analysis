@@ -47,3 +47,7 @@ names(enriched_scooters)[names(enriched_scooters) == 'TAZ'] <- 'End_TAZ'
 
 # save the enriched data to csv
 write.csv(enriched_scooters,"enriched_scooter_trips.csv")
+
+# find the proportion of rides that start/end in the same TAZ
+enriched_scooters$same_TAZ <- ifelse(enriched_scooters$Start_TAZ == enriched_scooters$End_TAZ, 1, 0)
+sum(enriched_scooters$same_TAZ, na.rm = TRUE) / nrow(enriched_scooters)

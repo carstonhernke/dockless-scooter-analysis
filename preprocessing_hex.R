@@ -33,6 +33,14 @@ hex_grid <- st_sf(st_make_grid(mpls_boundary, cellsize = .005, square = FALSE)) 
   mutate(HEX_ID = seq.int(n())) %>%
   rename(geometry = st_make_grid.mpls_boundary..cellsize...0.005..square...FALSE.)
 
+# get statistics about the hexagons
+
+#area
+area <- st_area(hex_grid[1,])
+area / 1000000 #square kilometers
+area / 2590000 #square miles
+area / 4046.856 #square miles
+
 
 # adjust the coordinate reference system for the TAZ data to match that of the street centerline data
 #crs = st_crs(mpls_centerlines)
@@ -72,21 +80,30 @@ ggplot() +
 library(ggmap)
 b <- st_bbox(mpls_boundary)
 names(b) <- c("left","bottom","right","top")
-#mpls_map <- get_stamenmap(bbox = b, maptype = 'toner-2011',color = c('bw'), zoom = 12)
-#ggmap(mpls_map)
+mpls_map <- get_stamenmap(bbox = b, maptype = 'toner-2011',color = c('bw'), zoom = 12)
+ggmap(mpls_map)
 
 library(ggplot2)
 library(RColorBrewer)
 library(ggsf)
-#ggmap(mpls_map) +
-#  theme_bw() +
-#  ggplot2::geom_sf(data = hex_freq, aes(fill = n, alpha = n), inherit.aes = FALSE, clip = 'off') +
-#  scale_fill_gradient(low = "darkgreen", high = "darkgreen")
-
-library(sf)
+ggmap(mpls_map) +
+ theme_bw() +
+ ggplot2::geom_sf(data = hex_grid, aes(alpha = .1), inherit.aes = FALSE) +
+  ggtitle("Hex zones overlaid on a map of Minneapolis") +
+  scale_colour_Publication() +
+  theme_Publication() +
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.title.y = element_blank(),
+        axis.text.y = element_blank(),
+        legend.position = "none")
 #plot(hex_freq[1], bgMap = get_map(location = b), alpha = .1)
 # save the enriched data to csv
-write.csv(enriched_scooters,"enriched_scooter_trips_hex.csv")
-st_write(hex_grid,"hex_grid.shp")
+#write.csv(enriched_scooters,"enriched_scooter_trips_hex.csv")
+#st_write(hex_grid,"hex_grid.shp")
 
-plot(hex_with_students)
+# find the proportion of rides that start/end in the same TAZ
+enriched_scooters$same_hex <- ifelse(enriched_scooters$Start_Hex_ID == enriched_scooters$End_Hex_ID, 1, 0)
+sum(enriched_scooters$same_hex, na.rm = TRUE) / nrow(enriched_scooters)
+
+
