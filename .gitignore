@@ -4,3 +4,9 @@ viz
 data
 .RHistory
 .DS_Store
+.dbf
+.prj
+.shp
+.csv
+hourly_net_plots
+visualizations
