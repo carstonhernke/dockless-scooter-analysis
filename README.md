@@ -1,5 +1,7 @@
 # dockless-scooter-analysis
-Working analysis for an upcoming thesis concerning the accessibility and usage of dockless scooters in Minneapolis, MN
+Analysis for an honors thesis concerning the accessibility and usage of dockless scooters in Minneapolis, MN.
+
+*UPDATE MAY 2019*: The thesis has been finished and approved by faculty. The title is _"Usage, equity, and safety of shared electric scooters: a geospatial analysis of trips taken in Minneapolis, Minnesota."_ A copy of the final thesis in the `Final Thesis` folder within this repository.
 
 ## Data Sources:
 
@@ -30,6 +32,10 @@ https://gisdata.mn.gov/dataset/us-mn-state-metc-trans-transitway-stations
 *US Census Block-Level Shapefiles:*
 
 https://www.census.gov/cgi-bin/geo/shapefiles/index.php?year=2018&layergroup=Block+Groups
+
+*Minneapolis Zoning Shapefiles*
+
+http://opendata.minneapolismn.gov/datasets/planning-primary-zoning
 
 
 
